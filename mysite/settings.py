@@ -18,7 +18,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['green-house-management.herokuapp.com']
+ALLOWED_HOSTS = ['greenhouse-management.herokuapp.com']
 
 # Application definition
 

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | {{ listing.name }} {% endblock %}
+
+{% block content %}
+<!-- Inquiry Modal -->
+<div class="modal fade" id="inquiryModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inquiryModalLabel">Edit this record</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'update' record.id %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+              <input type="hidden" name="user_id" value="{{ user.id }}">
+            {% else %}
+              <input type="hidden" name="user_id" value="0">
+            {% endif %}
+            <input type="hidden" name="realtor_email" value="{{ listing.realtor.email }}">
+            <input type="hidden" name="listing_id" value="{{ listing.id }}">
+            <div class="form-group">
+              <label for="property_name" class="col-form-label">Cartegory:</label>
+              <input type="text" name="category" class="form-control" value="{{ record.category }}">
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" name="name" class="form-control"  value=" {{ record.name}}">
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Date done</label>
+              <input type="date" name="date" class="form-control"  value=" {{record.date}}" >
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Activities</label>
+              
+              <textarea name="activities" class="form-control" value="{{rrecord.activities}}"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Method</label>
+              <textarea name="method" class="form-control" value="{{record.method}}"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Cost incured</label>
+              <input type="text" name="cost" class="form-control" value="{{record.cost}}">
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">photo</label>
+              
+              <input type="text" name="photo" class="form-control" value="{{record.photo}}">
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Activities</label>
+              <input type="text" name="harvest" class="form-control" value="{{record.havest}}">
+            </div>
+            <hr>
+            <input type="submit" value="Send" class="btn btn-block btn-secondary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

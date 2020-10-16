@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://dnihnkeqrjilhb:61c4aecdaed7e0308a910989c32f68b57ddda173a717c0fe0c96979c4fbf2e04@ec2-50-17-178-87.compute-1.amazonaws.com:5432/d4gmqt60hef8u8'
+        default='postgres://bkjcmbzlrvfsba:6bf7bb83176f2cc5174ff6fd6c61836030dd0ecb4cda930ad96c0fca6fedf51b@ec2-52-87-22-151.compute-1.amazonaws.com:5432/d9nu8r4loicfpf'
     )
     
 }

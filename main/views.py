@@ -6,7 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages, auth
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-
+import re
+from django.db.models import Q,Count
 from .models import Listing,ListingRecord,RecordsCartegory,Landprep
 @login_required
 def index(request):
@@ -46,8 +47,17 @@ def login(request):
 
 def listing(request,listing_id):
   print(listing_id)
-  
-  listing = ListingRecord.objects.all().filter(slug=listing_id)
+  words= re.split(r"[^A-Za-z']+",listing_id)
+  # k = listing_id.split(' ')
+  # print(k)
+  # query = Q()
+  # for word in words:
+  #   query |= Q(title=word)
+  # fine= ListingRecord.objects.values('title').annotate(Count('title')).order_by().filter(title_id=1)
+  # listing = ListingRecord.objects.filter(title__in=[item['title'] for item in fine])
+  # print(listing)
+  listing = ListingRecord.objects.filter(title__name=listing_id)
+
   
   return render(request, 'listings/listing.html',  {'listing': listing})      
 

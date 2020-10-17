@@ -40,8 +40,8 @@
                       <i class="fas fa-user"></i>Farmer incharge {{ listing.farmer }}</div>
                   </div>
                   <hr>
-                  <a href="{% url 'listing' listing.slug %}" class="btn btn-primary btn-block">edit</a>
-                  <a href="{% url 'listing' listing.slug %}" class="btn btn-primary btn-block">Add or read record</a>
+                  <a href="{% url 'listing' listing.name %}" class="btn btn-primary btn-block">edit</a>
+                  <a href="{% url 'listing' listing.name %}" class="btn btn-primary btn-block">{{ listing.name }}</a>
                 </div>
               </div>
             </div>

@@ -50,11 +50,15 @@ def logout(request):
     
 def listing(request,listing_id):
   print(listing_id)
-  
+  current_user = request.user
+  print(current_user)
+  disp = Labourer.objects.filter(projects__name=listing_id,user=current_user)
+  if disp:
+    print("...................")
   listing = ListingRecord.objects.filter(title__name=listing_id)
 
   
-  return render(request, 'listings/listing.html',  {'listing': listing})      
+  return render(request, 'listings/listing.html',  {'listing': listing,'disp':disp})      
 
 
 def editrec(request,rec_id):

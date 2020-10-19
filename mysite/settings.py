@@ -17,8 +17,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['greenhouse-management.herokuapp.com']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['greenhouse-management.herokuapp.com']
 
 # Application definition
 
@@ -70,18 +70,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://bkjcmbzlrvfsba:6bf7bb83176f2cc5174ff6fd6c61836030dd0ecb4cda930ad96c0fca6fedf51b@ec2-52-87-22-151.compute-1.amazonaws.com:5432/d9nu8r4loicfpf'
-    )
-    
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgres://bkjcmbzlrvfsba:6bf7bb83176f2cc5174ff6fd6c61836030dd0ecb4cda930ad96c0fca6fedf51b@ec2-52-87-22-151.compute-1.amazonaws.com:5432/d9nu8r4loicfpf'
+#     )
+    
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

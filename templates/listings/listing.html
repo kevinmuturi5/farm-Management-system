@@ -63,11 +63,15 @@
                   <span class="float-right">
                   </span>
                 </li>
+                {% if disp %}
                 <li class="list-group-item text-secondary">
                   <button class="btn-primary btn-block btn-lg" data-toggle="modal"  data-target="#inquiryModal">Edit</button>
                   <span class="float-right">
                   </span>
                 </li>
+                {% else %}
+       
+        {% endif%}
                 
               </ul>
             </div>
@@ -80,8 +84,12 @@
           <p>No record Available</p>
         </div>
         {% endif%}
+        {% if disp %}
         <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryMmodal">Add record</button>
-
+        {% else %}
+       
+        {% endif%}
+                
           <!-- Description -->
           <div class="row mb-5">
             <div class="col-md-12">

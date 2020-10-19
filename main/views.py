@@ -40,14 +40,7 @@ def login(request):
       return redirect('login')
   else:
     return render(request, 'accounts/login.html')
-        
-def logout(request):
-  print("vvvvvvvvvvvvvvvv ,.............")
-  if request.method == 'POST':
-    auth.logout(request)
-    messages.success(request, 'You are now logged out')
-    return redirect('main') 
-    
+          
 def listing(request,listing_id):
   print(listing_id)
   current_user = request.user

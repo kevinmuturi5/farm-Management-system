@@ -46,10 +46,10 @@ class ListingRecord(models.Model):
 
 
 class Labourer(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="labouror")
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name="labouror")
     projects = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="project")
     name = models.CharField(max_length=200)
-    allproj= models.ManyToManyField(Listing,blank=True)
+ 
     sex = models.CharField(max_length=50, choices=sex_choice, default='Male')
 
     def __str__(self):

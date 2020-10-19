@@ -8,7 +8,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 import re
 from django.db.models import Q,Count
-from .models import Listing,ListingRecord,RecordsCartegory,Landprep
+from .models import Listing,ListingRecord,Labourer
+
 @login_required
 def index(request):
     listings = Listing.objects.order_by('-due_date').filter(is_published=True)
@@ -21,11 +22,7 @@ def index(request):
        }
     return render(request, 'listings/listings.html', context)
 
-def logout(request):
-  if request.method == 'POST':
-    auth.logout(request)
-    messages.success(request, 'You are now logged out')
-    return redirect(request,'login')  
+
 
 def login(request):
   if request.method == 'POST':
@@ -44,18 +41,16 @@ def login(request):
   else:
     return render(request, 'accounts/login.html')
         
-
+def logout(request):
+  print("vvvvvvvvvvvvvvvv ,.............")
+  if request.method == 'POST':
+    auth.logout(request)
+    messages.success(request, 'You are now logged out')
+    return redirect('main') 
+    
 def listing(request,listing_id):
   print(listing_id)
-  words= re.split(r"[^A-Za-z']+",listing_id)
-  # k = listing_id.split(' ')
-  # print(k)
-  # query = Q()
-  # for word in words:
-  #   query |= Q(title=word)
-  # fine= ListingRecord.objects.values('title').annotate(Count('title')).order_by().filter(title_id=1)
-  # listing = ListingRecord.objects.filter(title__in=[item['title'] for item in fine])
-  # print(listing)
+  
   listing = ListingRecord.objects.filter(title__name=listing_id)
 
   

@@ -2,9 +2,13 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 
-
+sex_choice = (
+    ('Male', 'Male'),
+    ('Female', 'Female')
+)
 class Listing(models.Model):
   farmer = models.ForeignKey(User, on_delete=models.CASCADE)
+#   labourous = models.ManyToManyField(User,blank=True)
   photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
   name = models.CharField(max_length=200)
   message = models.TextField(blank=True)
@@ -40,23 +44,13 @@ class ListingRecord(models.Model):
     def natural_key(self):
         return (self.slug,)    
 
-class RecordsCartegory(models.Model):
-    landprep =  models.CharField(max_length=50)
-    deseasecon =  models.CharField(max_length=50)
-    havest =  models.CharField(max_length=50)
-    planting =  models.CharField(max_length=50)
-    weeding =  models.CharField(max_length=50)
-    fartiliser =  models.CharField(max_length=50)
-    pruning =  models.CharField(max_length=50)
-    staking =  models.CharField(max_length=50)
-    pestcontrol =  models.CharField(max_length=50)
-    
-class Landprep(models.Model):
-    listing =  models.ForeignKey(Listing,on_delete=models.CASCADE,related_name="re")
-    name = models.CharField(max_length=50)
-    date = models.DateField()
-    activities = models.TextField(blank=True)
-    method = models.TextField(blank=True)
-    cost = models.IntegerField()
-    photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
-    slug = models.SlugField(max_length=48)
+
+class Labourer(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="labouror")
+    projects = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="project")
+    name = models.CharField(max_length=200)
+    allproj= models.ManyToManyField(Listing,blank=True)
+    sex = models.CharField(max_length=50, choices=sex_choice, default='Male')
+
+    def __str__(self):
+        return self.name

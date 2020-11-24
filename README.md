@@ -58,7 +58,7 @@ Give your freedback  in our mail
 
 ## License
 
-Disclaimer: Everything you see here is open and free to use as long as you comply with the [license](#). There are no hidden charges. We promise to do our best to fix bugs and improve the code.
+Disclaimer: Everything you see here is open and free to use as long as you comply with the [license](https://github.com/kevinmuturi5/farm-Management-system/blob/main/LICENSE). There are no hidden charges. We promise to do our best to fix bugs and improve the code.
 
 Some situations do call for extra code; we can cover exotic use cases or build you a custom agricultural appliance.
 
